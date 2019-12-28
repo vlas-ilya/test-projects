@@ -1,0 +1,11 @@
+{
+  "backend": {
+    "port": 5101
+  },
+  "frontend": {
+    "port": 5102
+  },
+  "proxy": {
+    "port": 5103
+  }
+}

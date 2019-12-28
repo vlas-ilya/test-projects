@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+</head>
+<body>
+<script>
+  (async () => {
+    try {
+      const response = await fetch('/api/getList');
+      const list = await response.json();
+      console.log(list);
+    } catch (e) {
+      console.log(e);
+    }
+  })();
+</script>
+</body>
+</html>
