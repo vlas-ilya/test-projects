@@ -3,18 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Test</title>
+  <link href="css/index.css" rel="stylesheet">
 </head>
 <body>
-<script>
-  (async () => {
-    try {
-      const response = await fetch('/api/getList');
-      const list = await response.json();
-      console.log(list);
-    } catch (e) {
-      console.log(e);
-    }
-  })();
-</script>
+  <div id="content"></div>
+  <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

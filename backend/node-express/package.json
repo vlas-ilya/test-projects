@@ -5,9 +5,9 @@
     "server": "node server.js"
   },
   "dependencies": {
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "date-format": "3.0.0",
+    "node-fetch": "2.6.0"
   },
-  "devDependencies": {
-
-  }
+  "devDependencies": {}
 }

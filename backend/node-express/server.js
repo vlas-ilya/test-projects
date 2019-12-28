@@ -1,12 +1,15 @@
 const express = require('express');
 const config = require('../../config');
+const apiKey = require('../../production.config').nasaApiKey;
+const NasaService = require('./src/NasaService');
 
 const app = express();
+const service = new NasaService(apiKey);
 
-app.get('/api/getList', (req, res) => {
-  const list = ['item1', 'item2', 'item3'];
-  res.json(list);
-  console.log('Sent list of items');
+
+app.get('/api/getAstronomyPictureOfTheDay', async (req, res) => {
+  const astronomyPictureOfTheDayUrl = await service.getAstronomyPictureOfTheDay();
+  await res.json(astronomyPictureOfTheDayUrl);
 });
 
 app.listen(config.backend.port);
