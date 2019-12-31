@@ -1,7 +1,7 @@
 import AuthService from './services/AuthService';
 import Datastore from 'nedb';
 import NasaController from './controllers/NasaController';
-import NasaService from './services/NasaService';
+import NasaAstronomyPictureOfTheDayService from './services/NasaAstronomyPictureOfTheDayService';
 import UserService from './services/UserService';
 import config from '../../../config';
 import express from 'express';
@@ -13,7 +13,7 @@ const userDatastore = new Datastore({
   autoload: true,
 });
 const userService = new UserService(userDatastore);
-const nasaService = new NasaService(nasaApiKey);
+const nasaService = new NasaAstronomyPictureOfTheDayService(nasaApiKey);
 
 const app = express();
 

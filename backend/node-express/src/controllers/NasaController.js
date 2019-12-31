@@ -1,7 +1,9 @@
 export default class NasaController {
-  constructor(app, nasaService, authService) {
+  constructor(app, nasaAstronomyPictureOfTheDayService, authService) {
     this.getAstronomyPictureOfTheDay = this.getAstronomyPictureOfTheDay.bind(this);
-    this.nasaService = nasaService;
+
+    this.nasaAstronomyPictureOfTheDayService = nasaAstronomyPictureOfTheDayService;
+
     app.get(
       '/api/getAstronomyPictureOfTheDay',
       authService.isAuthenticated,
@@ -10,7 +12,7 @@ export default class NasaController {
   }
 
   async getAstronomyPictureOfTheDay(req, res) {
-    const url = await this.nasaService.getAstronomyPictureOfTheDay();
-    await res.json(url);
+    const picture = await this.nasaAstronomyPictureOfTheDayService.getPicture();
+    await res.json(picture);
   }
 }

@@ -5,16 +5,20 @@ export default class UserService {
 
   create(user) {
     return new Promise(async (resolve, reject) => {
-      const persisted = await this.find(user.id);
-      if (persisted) {
-        reject('Пользователь с таким логином уже существует');
-      }
-      this.db.insert(user, function(error, user) {
-        if (error) {
-          reject(error);
+      try {
+        const persisted = await this.find(user.id);
+        if (persisted) {
+          reject('Пользователь с таким логином уже существует');
         }
-        resolve(user);
-      });
+        this.db.insert(user, function (error, user) {
+          if (error) {
+            reject(error);
+          }
+          resolve(user);
+        });
+      } catch (error) {
+        reject(error);
+      }
     });
   }
 
@@ -29,6 +33,25 @@ export default class UserService {
         }
         resolve(docs[0]);
       });
+    });
+  }
+
+  update(user) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const persisted = this.find(user.login);
+        this.db.update(persisted, {
+          ...user,
+          _id: persisted._id
+        }, {}, (error, replacedCount) => {
+          if (error) {
+            reject(error);
+          }
+          resolve(replacedCount);
+        })
+      } catch (error) {
+        reject(error);
+      }
     });
   }
 }
