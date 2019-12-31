@@ -1,7 +1,7 @@
-const format = require('date-format');
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
+import format from 'date-format';
 
-module.exports = class NasaService {
+export default class NasaService {
   constructor(apiKey) {
     this.apiKey = apiKey;
     this.endpoints = {
@@ -18,11 +18,11 @@ module.exports = class NasaService {
     const astronomyPictureOfTheDay = await response.json();
 
     if ('hdurl' in astronomyPictureOfTheDay) {
-      return astronomyPictureOfTheDay.hdurl
+      return astronomyPictureOfTheDay.hdurl;
     }
 
     if ('url' in astronomyPictureOfTheDay) {
-      return astronomyPictureOfTheDay.url
+      return astronomyPictureOfTheDay.url;
     }
 
     throw Error('Неудалось загрузить изображение');

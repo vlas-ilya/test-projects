@@ -12,3 +12,4 @@ npm-debug.log*
 .idea/
 
 /production.config.json
+/backend/node-express/data/

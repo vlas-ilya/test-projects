@@ -2,12 +2,31 @@
   "name": "node-express",
   "version": "1.0.0",
   "scripts": {
-    "server": "node server.js"
+    "build": "babel src --out-dir dist --extensions '.js' --source-maps inline",
+    "start": "node dist/index.js",
+    "run": "npm run build && npm run start",
+    "prettier": "prettier --write './src/**/*.js'"
   },
   "dependencies": {
     "express": "4.17.1",
     "date-format": "3.0.0",
-    "node-fetch": "2.6.0"
+    "node-fetch": "2.6.0",
+    "nedb": "1.8.0",
+    "passport": "0.4.0",
+    "passport-local": "1.0.0",
+    "express-session": "1.17.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/cli": "7.7.4",
+    "@babel/core": "7.7.4",
+    "@babel/plugin-proposal-class-properties": "7.7.4",
+    "@babel/plugin-proposal-numeric-separator": "7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "7.7.4",
+    "@babel/preset-env": "7.7.4",
+    "import-sort-style-eslint": "6.0.0",
+    "prettier": "1.19.1",
+    "prettier-plugin-import-sort": "0.0.3",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.9.0"
+  }
 }
