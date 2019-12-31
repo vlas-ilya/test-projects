@@ -10,7 +10,7 @@ export default class UserService {
         if (persisted) {
           reject('Пользователь с таким логином уже существует');
         }
-        this.db.insert(user, function (error, user) {
+        this.db.insert(user, (error, user) => {
           if (error) {
             reject(error);
           }
@@ -40,15 +40,20 @@ export default class UserService {
     return new Promise(async (resolve, reject) => {
       try {
         const persisted = this.find(user.login);
-        this.db.update(persisted, {
-          ...user,
-          _id: persisted._id
-        }, {}, (error, replacedCount) => {
-          if (error) {
-            reject(error);
-          }
-          resolve(replacedCount);
-        })
+        this.db.update(
+          persisted,
+          {
+            ...user,
+            _id: persisted._id,
+          },
+          {},
+          (error, replacedCount) => {
+            if (error) {
+              reject(error);
+            }
+            resolve(replacedCount);
+          },
+        );
       } catch (error) {
         reject(error);
       }

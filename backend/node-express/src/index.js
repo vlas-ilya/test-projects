@@ -1,11 +1,12 @@
+import { nasaApiKey, sessionSecret } from '../../../production.config';
+
 import AuthService from './services/AuthService';
 import Datastore from 'nedb';
-import NasaController from './controllers/NasaController';
 import NasaAstronomyPictureOfTheDayService from './services/NasaAstronomyPictureOfTheDayService';
+import NasaController from './controllers/NasaController';
 import UserService from './services/UserService';
 import config from '../../../config';
 import express from 'express';
-import { nasaApiKey, sessionSecret } from '../../../production.config';
 import session from 'express-session';
 
 const userDatastore = new Datastore({
